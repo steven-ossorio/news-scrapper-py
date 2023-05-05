@@ -7,7 +7,6 @@ from flask import Flask, request, jsonify
 from news_scraper import NewsScraper
 from article_scraper import ArticleScraper
 from textblob import TextBlob
-from collections import defaultdict
 from open_ai import OpenAI
 from typing import List, Dict, Any
 
@@ -16,6 +15,11 @@ app = Flask(__name__)
 load_dotenv()
 
 openai.api_key = environ.get("OPENAI_API_KEY")
+
+
+@app.route("/")
+def test() -> str:
+    return "Hello, World!"
 
 
 @app.route("/get_news", methods=["POST"])
